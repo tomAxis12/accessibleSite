@@ -9,102 +9,184 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Initialize the mobile navigation
 function initializeNavigation() {
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
+  const menuButton = document.getElementById("menu-button");
+  const menu = document.getElementById("menu");
 
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener("click", function () {
-      const expanded = this.getAttribute("aria-expanded") === "true";
-      this.setAttribute("aria-expanded", !expanded);
-      mobileMenu.classList.toggle("hidden");
+  if (menuButton && menu) {
+    menuButton.addEventListener("click", () => {
+      const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", !isExpanded);
+      menu.classList.toggle("hidden");
     });
 
-    // Close mobile menu when pressing escape
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
-        mobileMenuButton.setAttribute("aria-expanded", "false");
-        mobileMenu.classList.add("hidden");
+    // Close menu when clicking outside
+    document.addEventListener("click", (event) => {
+      if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menu.classList.add("hidden");
       }
+    });
+
+    // Close menu on escape key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        menuButton.setAttribute("aria-expanded", "false");
+        menu.classList.add("hidden");
+      }
+    });
+
+    // Handle keyboard navigation within menu
+    const menuItems = menu.querySelectorAll("a");
+    const firstMenuItem = menuItems[0];
+    const lastMenuItem = menuItems[menuItems.length - 1];
+
+    menuItems.forEach((item) => {
+      item.addEventListener("keydown", (event) => {
+        if (event.key === "Tab") {
+          if (event.shiftKey && item === firstMenuItem) {
+            event.preventDefault();
+            lastMenuItem.focus();
+          } else if (!event.shiftKey && item === lastMenuItem) {
+            event.preventDefault();
+            firstMenuItem.focus();
+          }
+        }
+      });
     });
   }
 }
 
 // Form validation and accessibility
 function initializeForm() {
-  const form = document.querySelector("form");
+  const form = document.getElementById("contact-form");
+  const errorSummary = document.getElementById("error-summary");
+  const errorList = document.getElementById("error-list");
+  const successMessage = document.getElementById("success-message");
+  const messageTextarea = document.getElementById("message");
+  const messageRemaining = document.getElementById("message-remaining");
+  const submitButton = form?.querySelector("button[type='submit']");
+  const submitText = submitButton?.querySelector(".submit-text");
+  const loadingText = submitButton?.querySelector(".loading-text");
+
+  // Character count for message field
+  if (messageTextarea && messageRemaining) {
+    messageTextarea.addEventListener("input", () => {
+      const remaining = 500 - messageTextarea.value.length;
+      messageRemaining.textContent = remaining;
+      messageRemaining.setAttribute("aria-live", "polite");
+    });
+  }
 
   if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      // Get all form elements for validation
-      const requiredFields = form.querySelectorAll('[aria-required="true"]');
-      const errorSummary = document.getElementById("error-summary");
-      const errorList = document.getElementById("error-list");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const errors = [];
 
       // Clear previous errors
       errorList.innerHTML = "";
-      document.querySelectorAll(".error-message").forEach((el) => el.remove());
-      document
-        .querySelectorAll(".input-error")
-        .forEach((el) => el.classList.remove("input-error"));
+      errorSummary.classList.add("hidden");
+      successMessage.classList.add("hidden");
 
-      let errors = [];
+      // Show loading state
+      if (submitButton && submitText && loadingText) {
+        submitButton.disabled = true;
+        submitText.classList.add("hidden");
+        loadingText.classList.remove("hidden");
+      }
 
-      // Validate each required field
+      // Validate required fields
+      const requiredFields = form.querySelectorAll('[aria-required="true"]');
       requiredFields.forEach((field) => {
         if (!field.value.trim()) {
-          const fieldId = field.id;
-          const fieldLabel = document.querySelector(
-            `label[for="${fieldId}"]`
-          ).textContent;
-
-          // Add to error list
-          errors.push({
-            id: fieldId,
-            message: `${fieldLabel} is required`,
-          });
-
-          // Mark field as invalid
-          field.classList.add("input-error");
+          errors.push(
+            `${field.previousElementSibling.textContent.trim()} is required`
+          );
           field.setAttribute("aria-invalid", "true");
-
-          // Add error message after the field
-          const errorMessage = document.createElement("p");
-          errorMessage.className = "text-red-600 text-sm mt-1 error-message";
-          errorMessage.id = `${fieldId}-error`;
-          errorMessage.textContent = `${fieldLabel} is required`;
-          field.parentNode.insertBefore(errorMessage, field.nextSibling);
-
-          // Connect the error message to the input
-          field.setAttribute("aria-describedby", `${fieldId}-error`);
+        } else {
+          field.removeAttribute("aria-invalid");
         }
       });
 
-      // If there are errors, show the error summary and focus on it
-      if (errors.length > 0) {
-        errorSummary.classList.remove("hidden");
+      // Validate email format
+      const emailField = form.querySelector('input[type="email"]');
+      if (emailField && emailField.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailField.value)) {
+          errors.push("Please enter a valid email address");
+          emailField.setAttribute("aria-invalid", "true");
+        }
+      }
 
+      if (errors.length > 0) {
+        // Display errors
         errors.forEach((error) => {
           const li = document.createElement("li");
-          const link = document.createElement("a");
-          link.href = `#${error.id}`;
-          link.textContent = error.message;
-          link.addEventListener("click", function (e) {
-            document.getElementById(error.id).focus();
-          });
-          li.appendChild(link);
+          li.textContent = error;
           errorList.appendChild(li);
         });
-
+        errorSummary.classList.remove("hidden");
         errorSummary.focus();
       } else {
-        // Submit the form or show success message
-        const successMessage = document.getElementById("success-message");
-        form.classList.add("hidden");
-        successMessage.classList.remove("hidden");
-        successMessage.focus();
+        // Simulate form submission
+        try {
+          // In a real application, you would make an API call here
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+
+          // Show success message
+          successMessage.classList.remove("hidden");
+          successMessage.focus();
+          form.reset();
+
+          // Reset character count
+          if (messageRemaining) {
+            messageRemaining.textContent = "500";
+          }
+        } catch (error) {
+          // Handle submission error
+          const li = document.createElement("li");
+          li.textContent =
+            "An error occurred while submitting the form. Please try again.";
+          errorList.appendChild(li);
+          errorSummary.classList.remove("hidden");
+          errorSummary.focus();
+        }
+      }
+
+      // Reset loading state
+      if (submitButton && submitText && loadingText) {
+        submitButton.disabled = false;
+        submitText.classList.remove("hidden");
+        loadingText.classList.add("hidden");
       }
     });
   }
 }
+
+// Add keyboard shortcuts
+document.addEventListener("keydown", (event) => {
+  // Alt + H for Home
+  if (event.altKey && event.key === "h") {
+    event.preventDefault();
+    document.querySelector("a[href='/']")?.click();
+  }
+  // Alt + A for About
+  if (event.altKey && event.key === "a") {
+    event.preventDefault();
+    document.querySelector("a[href='/about']")?.click();
+  }
+  // Alt + S for Services
+  if (event.altKey && event.key === "s") {
+    event.preventDefault();
+    document.querySelector("a[href='/services']")?.click();
+  }
+  // Alt + C for Contact
+  if (event.altKey && event.key === "c") {
+    event.preventDefault();
+    document.querySelector("a[href='/contact']")?.click();
+  }
+  // Alt + M for Menu
+  if (event.altKey && event.key === "m") {
+    event.preventDefault();
+    menuButton?.click();
+  }
+});
