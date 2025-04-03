@@ -452,93 +452,99 @@
             </div>
 
             <div>
-              <span class="text-sm font-medium text-gray-700"
-                >Preferred Contact Method</span
-              >
-              <div class="mt-2 space-y-2">
-                <div class="flex items-center">
-                  <input
-                    id="contact-email"
-                    name="contact-method"
-                    type="checkbox"
-                    value="email"
-                    class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600 rounded"
-                    aria-checked="false"
-                  />
-                  <label
-                    for="contact-email"
-                    class="ml-2 block text-sm text-gray-700"
-                    >Email</label
-                  >
+              <fieldset>
+                <legend class="text-sm font-medium text-gray-700">
+                  Preferred Contact Method
+                </legend>
+                <div class="mt-2 space-y-2">
+                  <div class="flex items-center">
+                    <input
+                      id="contact-email"
+                      name="contact-method"
+                      type="checkbox"
+                      value="email"
+                      class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600 rounded"
+                      aria-checked="false"
+                    />
+                    <label
+                      for="contact-email"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Email</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="contact-phone"
+                      name="contact-method"
+                      type="checkbox"
+                      value="phone"
+                      class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600 rounded"
+                      aria-checked="false"
+                    />
+                    <label
+                      for="contact-phone"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Phone</label
+                    >
+                  </div>
                 </div>
-                <div class="flex items-center">
-                  <input
-                    id="contact-phone"
-                    name="contact-method"
-                    type="checkbox"
-                    value="phone"
-                    class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600 rounded"
-                    aria-checked="false"
-                  />
-                  <label
-                    for="contact-phone"
-                    class="ml-2 block text-sm text-gray-700"
-                    >Phone</label
-                  >
-                </div>
-              </div>
+              </fieldset>
             </div>
 
             <div>
-              <span class="text-sm font-medium text-gray-700">Urgency</span>
-              <div class="mt-2 space-y-2">
-                <div class="flex items-center">
-                  <input
-                    id="urgency-low"
-                    name="urgency"
-                    type="radio"
-                    value="low"
-                    class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600"
-                    checked
-                    aria-checked="true"
-                  />
-                  <label
-                    for="urgency-low"
-                    class="ml-2 block text-sm text-gray-700"
-                    >Low (1-2 business days)</label
-                  >
+              <fieldset>
+                <legend class="text-sm font-medium text-gray-700">
+                  Urgency
+                </legend>
+                <div class="mt-2 space-y-2">
+                  <div class="flex items-center">
+                    <input
+                      id="urgency-low"
+                      name="urgency"
+                      type="radio"
+                      value="low"
+                      class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600"
+                      checked
+                      aria-checked="true"
+                    />
+                    <label
+                      for="urgency-low"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Low (1-2 business days)</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="urgency-medium"
+                      name="urgency"
+                      type="radio"
+                      value="medium"
+                      class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600"
+                      aria-checked="false"
+                    />
+                    <label
+                      for="urgency-medium"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Medium (same day)</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="urgency-high"
+                      name="urgency"
+                      type="radio"
+                      value="high"
+                      class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600"
+                      aria-checked="false"
+                    />
+                    <label
+                      for="urgency-high"
+                      class="ml-2 block text-sm text-gray-700"
+                      >High (urgent)</label
+                    >
+                  </div>
                 </div>
-                <div class="flex items-center">
-                  <input
-                    id="urgency-medium"
-                    name="urgency"
-                    type="radio"
-                    value="medium"
-                    class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600"
-                    aria-checked="false"
-                  />
-                  <label
-                    for="urgency-medium"
-                    class="ml-2 block text-sm text-gray-700"
-                    >Medium (same day)</label
-                  >
-                </div>
-                <div class="flex items-center">
-                  <input
-                    id="urgency-high"
-                    name="urgency"
-                    type="radio"
-                    value="high"
-                    class="h-4 w-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-600"
-                    aria-checked="false"
-                  />
-                  <label
-                    for="urgency-high"
-                    class="ml-2 block text-sm text-gray-700"
-                    >High (urgent)</label
-                  >
-                </div>
-              </div>
+              </fieldset>
             </div>
 
             <div>
