@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessible Website Template</title>
+    <meta
+      name="description"
+      content="An accessible website template built with TailwindCSS"
+    />
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-blue-600 focus:text-white focus:z-50"
+      >Skip to main content</a
+    >
+
+    <header class="bg-white shadow-sm">
+      <!-- Navigation component -->
+      <nav aria-label="Main Navigation" class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <a href="/" class="flex items-center" aria-label="Home">
+              <svg
+                class="h-8 w-8 text-indigo-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                ></path>
+              </svg>
+              <span class="ml-2 text-xl font-bold">AccessibleSite</span>
+            </a>
+          </div>
+
+          <!-- Desktop navigation -->
+          <div class="hidden md:block">
+            <ul class="flex space-x-6" role="list">
+              <li>
+                <a
+                  href="/"
+                  class="text-gray-900 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+                  aria-current="page"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="text-gray-500 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  class="text-gray-500 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="text-gray-500 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              type="button"
+              class="text-gray-500 hover:text-gray-700 focus:outline-none"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              aria-label="Toggle navigation menu"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div
+          id="mobile-menu"
+          class="md:hidden hidden"
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
+          <div class="pt-2 pb-4 space-y-1">
+            <ul role="list">
+              <li>
+                <a
+                  href="/"
+                  class="block py-2 px-3 text-base font-medium text-gray-900 bg-gray-50 rounded-md"
+                  aria-current="page"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="block py-2 px-3 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  class="block py-2 px-3 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="block py-2 px-3 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold mb-8" tabindex="-1">
+        Accessible Components
+      </h1>
+
+      <section aria-labelledby="cards-section" class="mb-12">
+        <h2 id="cards-section" class="text-2xl font-semibold mb-4">
+          Card Examples
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg focus-within:ring-2 focus-within:ring-indigo-500"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1495020689067-958852a7765e"
+                alt="A person using keyboard with accessibility tools"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <span
+                  class="bg-indigo-600 text-white px-2 py-1 text-xs rounded-md"
+                  role="text"
+                  >Accessibility</span
+                >
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2">
+                <a href="/article/1" class="stretched-link focus:outline-none"
+                  >Web Accessibility Basics</a
+                >
+              </h3>
+              <p class="text-gray-600 mb-3">
+                Learn the fundamentals of making your websites accessible to all
+                users, including those with disabilities.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <span class="flex items-center">
+                  <svg
+                    class="h-4 w-4 mr-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>5 min read</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg focus-within:ring-2 focus-within:ring-indigo-500"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97"
+                alt="Person coding on laptop with assistive technology"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <span
+                  class="bg-green-600 text-white px-2 py-1 text-xs rounded-md"
+                  role="text"
+                  >Development</span
+                >
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2">
+                <a href="/article/2" class="stretched-link focus:outline-none"
+                  >ARIA Roles and Attributes</a
+                >
+              </h3>
+              <p class="text-gray-600 mb-3">
+                Improve your site's accessibility with ARIA roles, states, and
+                properties to make your content more understandable.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <span class="flex items-center">
+                  <svg
+                    class="h-4 w-4 mr-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>8 min read</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg focus-within:ring-2 focus-within:ring-indigo-500"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+                alt="Person using screen reader technology"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <span
+                  class="bg-purple-600 text-white px-2 py-1 text-xs rounded-md"
+                  role="text"
+                  >Testing</span
+                >
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2">
+                <a href="/article/3" class="stretched-link focus:outline-none"
+                  >Keyboard Navigation Testing</a
+                >
+              </h3>
+              <p class="text-gray-600 mb-3">
+                Learn how to test your website for keyboard accessibility to
+                ensure all users can navigate your content.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <span class="flex items-center">
+                  <svg
+                    class="h-4 w-4 mr-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>6 min read</span>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="form-section" class="mb-12">
+        <h2 id="form-section" class="text-2xl font-semibold mb-4">
+          Form Example
+        </h2>
+
+        <!-- Accessible Form -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <!-- Error summary -->
+          <div
+            id="error-summary"
+            class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 hidden"
+            tabindex="-1"
+            role="alert"
+            aria-labelledby="error-summary-title"
+          >
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg
+                  class="h-5 w-5 text-red-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h2
+                  id="error-summary-title"
+                  class="text-sm font-medium text-red-800"
+                >
+                  There are errors in the form
+                </h2>
+                <div class="mt-2 text-sm text-red-700">
+                  <ul id="error-list" class="list-disc pl-5 space-y-1"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success message (hidden by default) -->
+          <div
+            id="success-message"
+            class="bg-green-50 border-l-4 border-green-400 p-4 mb-6 hidden"
+            tabindex="-1"
+            role="alert"
+          >
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg
+                  class="h-5 w-5 text-green-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-green-800">
+                  Form submitted successfully!
+                </p>
+                <p class="mt-2 text-sm text-green-700">
+                  Thank you for your submission. We'll be in touch shortly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <form action="#" method="post" class="space-y-6" novalidate>
+            <fieldset>
+              <legend class="text-lg font-medium text-gray-900 mb-4">
+                Contact Information
+              </legend>
+
+              <!-- Name field -->
+              <div class="mb-4">
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  aria-required="true"
+                />
+              </div>
+
+              <!-- Email field -->
+              <div class="mb-4">
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  aria-required="true"
+                  aria-describedby="email-hint"
+                />
+                <p id="email-hint" class="mt-1 text-sm text-gray-500">
+                  We'll never share your email with anyone else.
+                </p>
+              </div>
+
+              <!-- Phone field -->
+              <div class="mb-4">
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  aria-describedby="phone-hint"
+                />
+                <p id="phone-hint" class="mt-1 text-sm text-gray-500">
+                  Optional
+                </p>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="text-lg font-medium text-gray-900 mb-4">
+                Your Message
+              </legend>
+
+              <!-- Subject field -->
+              <div class="mb-4">
+                <label
+                  for="subject"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  aria-required="true"
+                />
+              </div>
+
+              <!-- Message field -->
+              <div class="mb-4">
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Your Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  aria-required="true"
+                ></textarea>
+              </div>
+            </fieldset>
+
+            <!-- Preferences fieldset -->
+            <fieldset>
+              <legend class="text-lg font-medium text-gray-900 mb-4">
+                Preferences
+              </legend>
+
+              <!-- Checkbox group -->
+              <div
+                class="mb-4"
+                role="group"
+                aria-labelledby="contact-preferences"
+              >
+                <p
+                  id="contact-preferences"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  How would you like to be contacted?
+                </p>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <input
+                      id="contact-email"
+                      name="contact-method"
+                      type="checkbox"
+                      value="email"
+                      class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    />
+                    <label
+                      for="contact-email"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Email</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="contact-phone"
+                      name="contact-method"
+                      type="checkbox"
+                      value="phone"
+                      class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    />
+                    <label
+                      for="contact-phone"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Phone</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Radio button group -->
+              <div role="radiogroup" aria-labelledby="urgency-level">
+                <p
+                  id="urgency-level"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Urgency Level
+                </p>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <input
+                      id="urgency-low"
+                      name="urgency"
+                      type="radio"
+                      value="low"
+                      class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
+                      checked
+                    />
+                    <label
+                      for="urgency-low"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Low - Response within a week</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="urgency-medium"
+                      name="urgency"
+                      type="radio"
+                      value="medium"
+                      class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
+                    />
+                    <label
+                      for="urgency-medium"
+                      class="ml-2 block text-sm text-gray-700"
+                      >Medium - Response within 2-3 days</label
+                    >
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      id="urgency-high"
+                      name="urgency"
+                      type="radio"
+                      value="high"
+                      class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
+                    />
+                    <label
+                      for="urgency-high"
+                      class="ml-2 block text-sm text-gray-700"
+                      >High - Response within 24 hours</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="flex items-center mt-4">
+              <button
+                type="submit"
+                class="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4">
+        <p>&copy; 2023 Accessible Template. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

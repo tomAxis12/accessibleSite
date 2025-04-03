@@ -1,0 +1,263 @@
+<!-- Accessible Form -->
+<div class="bg-white rounded-lg shadow-md p-6">
+  <!-- Error summary -->
+  <div
+    id="error-summary"
+    class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 hidden"
+    tabindex="-1"
+    role="alert"
+    aria-labelledby="error-summary-title"
+  >
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <svg
+          class="h-5 w-5 text-red-400"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <div class="ml-3">
+        <h2 id="error-summary-title" class="text-sm font-medium text-red-800">
+          There are errors in the form
+        </h2>
+        <div class="mt-2 text-sm text-red-700">
+          <ul id="error-list" class="list-disc pl-5 space-y-1"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success message (hidden by default) -->
+  <div
+    id="success-message"
+    class="bg-green-50 border-l-4 border-green-400 p-4 mb-6 hidden"
+    tabindex="-1"
+    role="alert"
+  >
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <svg
+          class="h-5 w-5 text-green-400"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <div class="ml-3">
+        <p class="text-sm font-medium text-green-800">
+          Form submitted successfully!
+        </p>
+        <p class="mt-2 text-sm text-green-700">
+          Thank you for your submission. We'll be in touch shortly.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <form action="#" method="post" class="space-y-6" novalidate>
+    <fieldset>
+      <legend class="text-lg font-medium text-gray-900 mb-4">
+        Contact Information
+      </legend>
+
+      <!-- Name field -->
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700 mb-1"
+          >Full Name</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          aria-required="true"
+        />
+      </div>
+
+      <!-- Email field -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1"
+          >Email Address</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          aria-required="true"
+          aria-describedby="email-hint"
+        />
+        <p id="email-hint" class="mt-1 text-sm text-gray-500">
+          We'll never share your email with anyone else.
+        </p>
+      </div>
+
+      <!-- Phone field -->
+      <div class="mb-4">
+        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1"
+          >Phone Number</label
+        >
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          aria-describedby="phone-hint"
+        />
+        <p id="phone-hint" class="mt-1 text-sm text-gray-500">Optional</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend class="text-lg font-medium text-gray-900 mb-4">
+        Your Message
+      </legend>
+
+      <!-- Subject field -->
+      <div class="mb-4">
+        <label
+          for="subject"
+          class="block text-sm font-medium text-gray-700 mb-1"
+          >Subject</label
+        >
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          aria-required="true"
+        />
+      </div>
+
+      <!-- Message field -->
+      <div class="mb-4">
+        <label
+          for="message"
+          class="block text-sm font-medium text-gray-700 mb-1"
+          >Your Message</label
+        >
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          aria-required="true"
+        ></textarea>
+      </div>
+    </fieldset>
+
+    <!-- Preferences fieldset -->
+    <fieldset>
+      <legend class="text-lg font-medium text-gray-900 mb-4">
+        Preferences
+      </legend>
+
+      <!-- Checkbox group -->
+      <div class="mb-4" role="group" aria-labelledby="contact-preferences">
+        <p
+          id="contact-preferences"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          How would you like to be contacted?
+        </p>
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <input
+              id="contact-email"
+              name="contact-method"
+              type="checkbox"
+              value="email"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+            />
+            <label for="contact-email" class="ml-2 block text-sm text-gray-700"
+              >Email</label
+            >
+          </div>
+          <div class="flex items-center">
+            <input
+              id="contact-phone"
+              name="contact-method"
+              type="checkbox"
+              value="phone"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+            />
+            <label for="contact-phone" class="ml-2 block text-sm text-gray-700"
+              >Phone</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Radio button group -->
+      <div role="radiogroup" aria-labelledby="urgency-level">
+        <p
+          id="urgency-level"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Urgency Level
+        </p>
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <input
+              id="urgency-low"
+              name="urgency"
+              type="radio"
+              value="low"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
+              checked
+            />
+            <label for="urgency-low" class="ml-2 block text-sm text-gray-700"
+              >Low - Response within a week</label
+            >
+          </div>
+          <div class="flex items-center">
+            <input
+              id="urgency-medium"
+              name="urgency"
+              type="radio"
+              value="medium"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
+            />
+            <label for="urgency-medium" class="ml-2 block text-sm text-gray-700"
+              >Medium - Response within 2-3 days</label
+            >
+          </div>
+          <div class="flex items-center">
+            <input
+              id="urgency-high"
+              name="urgency"
+              type="radio"
+              value="high"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
+            />
+            <label for="urgency-high" class="ml-2 block text-sm text-gray-700"
+              >High - Response within 24 hours</label
+            >
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="flex items-center mt-4">
+      <button
+        type="submit"
+        class="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,123 @@
+<nav aria-label="Main Navigation" class="container mx-auto px-4">
+  <div class="flex items-center justify-between h-16">
+    <div class="flex items-center">
+      <a href="/" class="flex items-center" aria-label="Home">
+        <svg
+          class="h-8 w-8 text-indigo-600"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+          ></path>
+        </svg>
+        <span class="ml-2 text-xl font-bold">AccessibleSite</span>
+      </a>
+    </div>
+
+    <!-- Desktop navigation -->
+    <div class="hidden md:block">
+      <ul class="flex space-x-6" role="list">
+        <li>
+          <a
+            href="/"
+            class="text-gray-900 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/about"
+            class="text-gray-500 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="/services"
+            class="text-gray-500 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class="text-gray-500 hover:text-indigo-600 py-2 rounded-md text-sm font-medium"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Mobile menu button -->
+    <div class="md:hidden">
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="text-gray-500 hover:text-gray-700 focus:outline-none"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Toggle navigation menu"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden"
+    role="navigation"
+    aria-label="Mobile navigation"
+  >
+    <div class="pt-2 pb-4 space-y-1">
+      <ul role="list">
+        <li>
+          <a
+            href="/"
+            class="block py-2 px-3 text-base font-medium text-gray-900 bg-gray-50 rounded-md"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/about"
+            class="block py-2 px-3 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="/services"
+            class="block py-2 px-3 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class="block py-2 px-3 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
